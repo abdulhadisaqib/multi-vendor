@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import path from "node:path";
+import ErrorHandler from "./middleware/error.js";
 
 const app = express();
 
@@ -15,5 +16,7 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
     path: path.resolve(import.meta.dirname, "../.env"),
   });
 }
+
+app.use(ErrorHandler);
 
 export default app;
